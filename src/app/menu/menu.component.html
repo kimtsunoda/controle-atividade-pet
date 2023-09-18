@@ -1,11 +1,25 @@
-<div class="navbar-fixed" style="z-index: 1001 !important">
+<div class="navbar-fixed">
   <nav>
-    <div class="nav-wrapper amber accent-4">
-      <div class="container">
-        <div class="titulo">
-          Controle atividade pet
+    <div class="nav-wrapper blue darken-4">
+        <a class="brand-logo" routerLink="inicio"> <img class="my-logo" src="assets/resources/images/logo.png" /></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a routerLink="pets" class="flow-text">Pets</a></li>
+          <li><a routerLink="atividades" class="flow-text">Atividades</a></li>
+        </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav amber" #mobile>
+    <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="center">
+          <img
+            class="circle responsive-img"
+            src="assets/resources/images/logo.png"
+          />
         </div>
       </div>
     </div>
-  </nav>
+  </ul>
+  
 </div>

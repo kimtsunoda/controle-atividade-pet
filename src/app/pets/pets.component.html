@@ -1,0 +1,27 @@
+<div class="container contact">
+  <h5>Cadastrar Pet</h5>
+
+  <form class="col s12" (submit)="onSubmit()">
+    <div class="row">
+      <div class="input-field col s12">
+        <input
+          id="input-pet"
+          name="input-pet"
+          type="text"
+        />
+        <label for="input-deposit" class="active">Nome do Pet</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light amber darken-4" type="submit">
+      Salvar
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
+
+  <h5>Pet Cadastrado</h5>
+  <app-painel
+    #contador
+    [value]="this.value"
+  ></app-painel>
+
+</div>
