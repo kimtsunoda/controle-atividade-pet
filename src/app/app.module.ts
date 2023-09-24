@@ -9,6 +9,7 @@ import { LandPageComponent } from './land-page/land-page.component';
 import { PetsComponent } from './pets/pets.component';
 import { AtividadesComponent } from './atividades/atividades.component';
 import { PainelComponent } from './painel/painel.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PainelComponent } from './painel/painel.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

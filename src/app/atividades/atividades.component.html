@@ -1,26 +1,89 @@
 <div class="container contact">
   <h5>Cadastrar Atividades</h5>
 
-  <form class="col s12" (submit)="onSubmit()">
+  <form class="col s12" #form="ngForm" (submit)="onSubmit()">
     <div class="row">
       <div class="input-field col s12">
         <input
-          id="input-pet"
-          name="input-pet"
+          id="input-nomePet"
+          name="input-nomePet"
           type="text"
+          [(ngModel)]="this.atividade.nomePet"
+          #nomePet="ngModel"
+          required
         />
-        <label for="input-deposit" class="active">Nome do Pet</label>
+        <label for="input-nomePet" class="active">Nome do Pet</label>
+        <div class="red-text" [hidden]="nomePet.valid || nomePet.untouched">
+          Por favor, informe o nome do pet
       </div>
     </div>
-    <button class="btn waves-effect waves-light amber darken-4" type="submit">
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input
+        id="input-descricaoAtividade"
+        name="input-descricaoAtividade"
+        type="text"
+        [(ngModel)]="this.atividade.descricaoAtividade"
+        #descricaoAtividade="ngModel"
+        required
+      />
+      <label for="input-descricaoAtividade" class="active">Descrição da Atividade</label>
+      <div class="red-text" [hidden]="descricaoAtividade.valid || descricaoAtividade.untouched">
+        Por favor, informe a descrição da atividade
+    </div>
+  </div>
+</div>
+    <button class="btn waves-effect waves-light amber darken-4" type="submit" [disabled]="!form.valid">
       Salvar
       <i class="material-icons right">send</i>
     </button>
   </form>
 
-  <h5>Atividade Cadastrada?</h5>
-  <app-painel
-    #painel
-    [value]="this.value"
-  ></app-painel>
+  <h5>Atividades Cadastradas</h5>
+
+  <table class="highlight" *ngIf="atividades && atividades!.length > 0">
+    <thead>
+      <tr>
+        <th>Nome do Pet</th>
+        <th>Descricao da Atividade</th>
+        <th>Data</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let a of atividades">
+        <td>{{ a.nomePet }}</td>
+        <td>{{ a.descricaoAtividade  }}</td>
+        <td>{{ a.data! }}</td>
+        <td class="right">
+          <a
+            ><i class="material-icons my-icon-size" (click)="editar(a)"
+              >edit</i
+            ></a
+          >
+          <a
+            ><i
+              class="material-icons my-icon-size"
+              (click)="deletar(a.nomePet)"
+              >delete</i
+            ></a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!atividades || atividades!.length == 0">
+    <div class="row">
+      <div class="center-align">
+        <img src="assets/resources/images/patas.png" class="img-responsive" height="50em"/>
+        <span class="col s12 flow-text"
+          >Você ainda não tem atividade cadastrada!</span
+        >
+      </div>
+    </div>
   </div>
+
+</div>

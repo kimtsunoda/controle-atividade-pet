@@ -1,21 +1,40 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AtividadesService } from './atividades.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Atividade } from '../models/ativdade';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-atividades',
   templateUrl: './atividades.component.html',
   styleUrls: ['./atividades.component.css']
 })
-export class AtividadesComponent implements OnInit, AfterViewInit {
-  value: string = "";
+export class AtividadesComponent implements OnInit {
+  @ViewChild('form') form!: NgForm;
+  
+  atividade!: Atividade;
+  atividades?: Atividade[];
 
-  ngAfterViewInit(): void {
-    
-  }
+  constructor(private atividadesService: AtividadesService) {}
+
   ngOnInit(): void {
+    this.atividade = new Atividade('', '');
+    this.atividades = this.atividadesService.listar();
     
   }
 
   onSubmit() {
-    this.value = "SIM"
+    this.atividadesService.salvar(this.atividade);
+
   }
+
+  editar(atividade: Atividade) {
+    let copia = Atividade.copiar(atividade);
+    this.atividade = copia;
+  }
+
+  deletar(nome: string) {
+    this.atividadesService.deletar(nome);
+    this.atividades = this.atividadesService.listar();
+  }
+
 }

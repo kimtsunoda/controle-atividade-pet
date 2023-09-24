@@ -1,27 +1,111 @@
 <div class="container contact">
   <h5>Cadastrar Pet</h5>
 
-  <form class="col s12" (submit)="onSubmit()">
+  <form class="col s12"  #form="ngForm" (submit)="onSubmit()">
     <div class="row">
       <div class="input-field col s12">
         <input
-          id="input-pet"
-          name="input-pet"
+          id="input-nome"
+          name="input-nome"
           type="text"
+          class="validate"
+          [(ngModel)]="this.pet.nome"
+          #nome="ngModel"
+          pattern="^[^-\s][a-zA-ZÀ-ú ]*"
+          required
         />
-        <label for="input-deposit" class="active">Nome do Pet</label>
+        <label for="input-nome" class="active">Nome</label>
+        <div class="red-text"  [hidden]="nome.valid || nome.untouched">
+          Por favor, informe o nome do pet (Não é permitido espaço no começo)
+        </div>
       </div>
     </div>
-    <button class="btn waves-effect waves-light amber darken-4" type="submit">
+    <div class="row">
+      <div class="input-field col s12">
+        <input
+          id="input-tipo"
+          name="input-tipo"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.pet.tipo"
+          #tipo="ngModel"
+          pattern="^[^-\s][a-zA-ZÀ-ú ]*"
+          required
+        />
+        <label for="input-tipo" class="active">Tipo</label>
+        <div class="red-text"  [hidden]="tipo.valid || tipo.untouched">
+          Por favor, informe o tipo do pet (Não é permitido espaço no começo)
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input
+          id="input-raca"
+          name="input-raca"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.pet.raca"
+          #raca="ngModel"
+          pattern="^[^-\s][a-zA-ZÀ-ú ]*"
+          required
+        />
+        <label for="input-raca" class="active">Raça</label>
+        <div class="red-text" [hidden]="raca.valid || raca.untouched">
+          Por favor, informe o raça do pet (Não é permitido espaço no começo)
+        </div>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light amber darken-4" type="submit" [disabled]="!form.valid">
       Salvar
       <i class="material-icons right">send</i>
     </button>
   </form>
 
-  <h5>Pet Cadastrado</h5>
-  <app-painel
-    #contador
-    [value]="this.value"
-  ></app-painel>
+  <h5>Pets Cadastrados</h5>
+
+  <table class="highlight" *ngIf="pets && pets!.length > 0">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Raça</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of pets">
+        <td>{{ p.nome }}</td>
+        <td>{{ p.tipo  }}</td>
+        <td>{{ p.raca! }}</td>
+        <td class="right">
+          <a
+            ><i class="material-icons my-icon-size" (click)="editar(p)"
+              >edit</i
+            ></a
+          >
+          <a
+            ><i
+              class="material-icons my-icon-size"
+              (click)="deletar(p.nome)"
+              >delete</i
+            ></a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!pets || pets!.length == 0">
+    <div class="row">
+      <div class="center-align">
+        <img src="assets/resources/images/patas.png" class="img-responsive" height="50em"/>
+        <span class="col s12 flow-text"
+          >Você ainda não tem pet cadastrado!</span
+        >
+      </div>
+    </div>
+  </div>
 
 </div>
