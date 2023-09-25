@@ -8,8 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LandPageComponent } from './land-page/land-page.component';
 import { PetsComponent } from './pets/pets.component';
 import { AtividadesComponent } from './atividades/atividades.component';
-import { PainelComponent } from './painel/painel.component';
 import { FormsModule } from '@angular/forms';
+import { TotalAtividadesComponent } from './atividades/total-atividades/total-atividades.component';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
     LandPageComponent,
     PetsComponent,
     AtividadesComponent,
-    PainelComponent
+    TotalAtividadesComponent
   ],
   imports: [
     BrowserModule,

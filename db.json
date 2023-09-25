@@ -1,0 +1,14 @@
+{
+  "pets": [
+    {
+      "nome": "Luke",
+      "tipo": "Cachorro",
+      "raca": "Golden Retriever"
+    },
+    {
+      "nome": "Belinha",
+      "tipo": "Gato",
+      "raca": "Siames"
+    }
+  ]
+}

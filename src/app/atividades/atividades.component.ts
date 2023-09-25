@@ -6,7 +6,8 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-atividades',
   templateUrl: './atividades.component.html',
-  styleUrls: ['./atividades.component.css']
+  styleUrls: ['./atividades.component.css'],
+  providers: [AtividadesService]
 })
 export class AtividadesComponent implements OnInit {
   @ViewChild('form') form!: NgForm;
@@ -23,7 +24,16 @@ export class AtividadesComponent implements OnInit {
   }
 
   onSubmit() {
-    this.atividadesService.salvar(this.atividade);
+    this.atividadesService.salvar(this.atividade)
+    .then(() => {
+      console.log('Atividade cadastrada com sucesso');
+    })
+    .catch((e) => {
+      console.log(e);
+    })
+    .finally(() => {
+      console.log('A operação foi finalizada');
+    });
 
   }
 
