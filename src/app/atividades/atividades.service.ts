@@ -30,27 +30,12 @@ export class AtividadesService {
       return p
     }
 
-  atualizar(atividade: Atividade) {
-    this.deletar(atividade.nomePet);
-    this.salvar(atividade);
-  }
-
-  deletar(nome: string): boolean {
-    this.atividades = WebStorageUtil.get(Constants.ATIVIDADES_KEY);
-    this.atividades = this.atividades.filter((a) => {
-      return a.nomePet?.valueOf() != nome?.valueOf();
-    });
-
-    WebStorageUtil.set(Constants.ATIVIDADES_KEY, this.atividades);
-    return true;
-  }
-
   listar(): Atividade[] {
     this.atividades = WebStorageUtil.get(Constants.ATIVIDADES_KEY);
     return this.atividades;
   }
 
-  notifyTotalUsers() {
+  notifyTotalAtividades() {
     this.atividadeSource.next(this.listar()?.length);
   }
 

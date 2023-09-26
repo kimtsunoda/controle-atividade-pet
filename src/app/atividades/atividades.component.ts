@@ -37,14 +37,5 @@ export class AtividadesComponent implements OnInit {
 
   }
 
-  editar(atividade: Atividade) {
-    let copia = Atividade.copiar(atividade);
-    this.atividade = copia;
-  }
-
-  deletar(nome: string) {
-    this.atividadesService.deletar(nome);
-    this.atividades = this.atividadesService.listar();
-  }
 
 }

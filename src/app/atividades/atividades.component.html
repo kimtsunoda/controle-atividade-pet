@@ -54,23 +54,9 @@
 
     <tbody>
       <tr *ngFor="let a of atividades">
-        <td>{{ a.nomePet }}</td>
-        <td>{{ a.descricaoAtividade  }}</td>
-        <td>{{ a.data! }}</td>
-        <td class="right">
-          <a
-            ><i class="material-icons my-icon-size" (click)="editar(a)"
-              >edit</i
-            ></a
-          >
-          <a
-            ><i
-              class="material-icons my-icon-size"
-              (click)="deletar(a.nomePet)"
-              >delete</i
-            ></a
-          >
-        </td>
+        <td>{{ a.nomePet | uppercase }}</td>
+        <td>{{ a.descricaoAtividade | uppercase }}</td>
+        <td>{{ a.data! | date: 'shortDate'}}</td>
       </tr>
     </tbody>
   </table>

@@ -76,9 +76,9 @@
 
     <tbody>
       <tr *ngFor="let p of pets">
-        <td>{{ p.nome }}</td>
-        <td>{{ p.tipo  }}</td>
-        <td>{{ p.raca! }}</td>
+        <td>{{ p.nome  | uppercase }}</td>
+        <td>{{ p.tipo   | uppercase }}</td>
+        <td>{{ p.raca | uppercase }}</td>
         <td class="right">
           <a
             ><i class="material-icons my-icon-size" (click)="editar(p)"
@@ -107,5 +107,11 @@
       </div>
     </div>
   </div>
+
+  <h5>Total Pets Cadastrados</h5>
+  <app-painel>
+    [value]="this.pets.length"
+    (petEvent)="this.onPetEvent($event)"
+  </app-painel>
 
 </div>
