@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Pet } from '../models/pet';
 import { PetsService } from './pets.service';
 import { PainelComponent } from '../painel/painel.component';
+import { WebStorageUtil } from '../util/web.storage.util';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class PetsComponent implements OnInit {
   constructor(private petService: PetsService) {}
 
   ngOnInit(): void {
+    WebStorageUtil.initializePetsWebStorage()
     this.pet = new Pet('', '', "");
     this.pets = this.petService.listar();
   }
@@ -44,10 +46,11 @@ export class PetsComponent implements OnInit {
   editar(pet: Pet) {
     let copia = Pet.copiar(pet);
     this.pet = copia;
+    this.petService.atualizar(pet);
   }
 
-  deletar(nome: string) {
-    this.petService.deletar(nome);
+  deletar(id: string) {
+    this.petService.deletar(id);
     this.pets = this.petService.listar();
   }
 

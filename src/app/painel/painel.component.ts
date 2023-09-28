@@ -18,7 +18,7 @@ export class PainelComponent implements OnInit, OnChanges {
     if (this.value > 0)
       setTimeout(() => {
         this.petEvent.emit(true);
-      }, 5000);
+      }, 500);
   }
 
 }

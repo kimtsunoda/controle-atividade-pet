@@ -5,12 +5,11 @@ import { Constants } from '../util/constant';
 
 @Injectable({providedIn: 'root'})
 export class PetsService {
-  pets!: Pet[];
+  pets: Pet[];
 
   constructor() {
-    this.pets = WebStorageUtil.get(Constants.PETS_KEY) || [];
+    this.pets = WebStorageUtil.get(Constants.PETS_KEY);
   }
-
 
   salvar(pet: Pet) {
     this.pets.push(pet);
@@ -18,14 +17,14 @@ export class PetsService {
   }
 
   atualizar(pet: Pet) {
-    this.deletar(pet.nome);
+    this.deletar(pet.id);
     this.salvar(pet);
   }
 
-  deletar(nome: string): boolean {
+  deletar(id: string): boolean {
     this.pets = WebStorageUtil.get(Constants.PETS_KEY);
     this.pets = this.pets.filter((p) => {
-      return p.nome?.valueOf() != nome?.valueOf();
+      return p.id?.valueOf() != id?.valueOf();
     });
 
     WebStorageUtil.set(Constants.PETS_KEY, this.pets);

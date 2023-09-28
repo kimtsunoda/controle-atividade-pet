@@ -11,24 +11,32 @@ export class AtividadesService {
   private atividadeSource!: BehaviorSubject<number>;
 
   constructor() {
-    this.atividades = WebStorageUtil.get(Constants.ATIVIDADES_KEY)  || [] ;
+    this.atividades = WebStorageUtil.get(Constants.ATIVIDADES_KEY);
     this.atividadeSource = new BehaviorSubject<number>(this.atividades.length);
   }
 
-
-  salvar(atividade: Atividade): Promise<Atividade>{
-    const p = new Promise<Atividade>((resolve, reject) => {
-      if (atividade.descricaoAtividade.length < 2) {
-        reject('Descrição muito curta.');
-      } 
+  salvar(atividade: Atividade): Promise<Atividade> {
+    return new Promise<Atividade>((resolve, reject) => {
       setTimeout(() => {
         this.atividades.push(atividade);
         WebStorageUtil.set(Constants.ATIVIDADES_KEY, this.atividades);
         resolve(atividade);
-      }, 10000);
-    })
-      return p
-    }
+      }, 1000);
+    });
+  }
+
+  deletar(id: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      setTimeout(() => {
+        this.atividades = WebStorageUtil.get(Constants.ATIVIDADES_KEY);
+        this.atividades = this.atividades.filter((a) => {
+          a.id?.valueOf() != id?.valueOf();
+        });
+        WebStorageUtil.set(Constants.ATIVIDADES_KEY, this.atividades);
+        resolve(id);
+      }, 1000);
+    });
+  }
 
   listar(): Atividade[] {
     this.atividades = WebStorageUtil.get(Constants.ATIVIDADES_KEY);
@@ -42,5 +50,5 @@ export class AtividadesService {
   asObservable(): Observable<number> {
     return this.atividadeSource;
   }
-
+  
 }

@@ -57,6 +57,15 @@
         <td>{{ a.nomePet | uppercase }}</td>
         <td>{{ a.descricaoAtividade | uppercase }}</td>
         <td>{{ a.data! | date: 'shortDate'}}</td>
+        <td class="right">
+          <a
+            ><i
+              class="material-icons my-icon-size"
+              (click)="deletar(a.id)"
+              >delete</i
+            ></a
+          >
+        </td>
       </tr>
     </tbody>
   </table>
