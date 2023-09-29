@@ -10,8 +10,7 @@ import { PetsComponent } from './pets/pets.component';
 import { AtividadesComponent } from './atividades/atividades.component';
 import { FormsModule } from '@angular/forms';
 import { TotalAtividadesComponent } from './atividades/total-atividades/total-atividades.component';
-import { ModalComponent } from './modal/modal.component';
-import { PainelComponent } from './painel/painel.component';
+import { PetsDetalhesComponent } from './pets-detalhes/pets-detalhes.component';
 
 
 @NgModule({
@@ -21,10 +20,9 @@ import { PainelComponent } from './painel/painel.component';
     FooterComponent,
     LandPageComponent,
     PetsComponent,
-    PainelComponent,
     AtividadesComponent,
     TotalAtividadesComponent,
-    ModalComponent
+    PetsDetalhesComponent
   ],
   imports: [
     BrowserModule,

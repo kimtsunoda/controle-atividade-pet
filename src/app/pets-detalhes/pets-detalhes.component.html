@@ -1,0 +1,19 @@
+<div class="container contact">
+  <h5>Dados do Pet</h5>
+  
+<div *ngIf="pet">
+  <li class="collection-item">
+    <span class="badge left">NOME</span>{{ pet.nome | uppercase}}
+  </li>
+  <li class="collection-item">
+    <span class="badge left">TIPO</span>{{pet.tipo  | uppercase }}
+  </li>
+  <li class="collection-item">
+    <span class="badge left">RAÇA</span>{{ pet.raca  | uppercase }}
+  </li>
+  <li class="collection-item">
+    <span class="badge left">DATA DE NASCIMENTO</span>{{ pet.dataNascimento | date: "dd/MM/yyyy" }}
+  </li>
+  
+</div>
+

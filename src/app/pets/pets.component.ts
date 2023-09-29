@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Pet } from '../models/pet';
 import { PetsService } from './pets.service';
-import { PainelComponent } from '../painel/painel.component';
 import { WebStorageUtil } from '../util/web.storage.util';
 
 
@@ -14,9 +13,6 @@ import { WebStorageUtil } from '../util/web.storage.util';
 })
 export class PetsComponent implements OnInit {
   @ViewChild('form') form!: NgForm;
-
-  @ViewChild(PainelComponent)
-  painelComponent!: PainelComponent;
 
   pet!: Pet;
   pets?: Pet[];
@@ -52,16 +48,6 @@ export class PetsComponent implements OnInit {
   deletar(id: string) {
     this.petService.deletar(id);
     this.pets = this.petService.listar();
-  }
-
-  onPetEvent(event: boolean) {
-    this.modal.show = event;
-    this.modal.title = 'Eiiii...';
-    this.modal.text = `As vacinas do seu Amiguinho estão em dia?`;
-  }
-
-  onCloseModal() {
-    this.modal.show = false;
   }
 
 }

@@ -1,6 +1,6 @@
 # ControleAtividadePet
 
-
+Este projeto tem como objetivo implementar progressivamente os requisitos propostos na Frameworks Web - JAVA_XXV (2022_02)
 
 ## Endereço de Deploy - GitHub Pages
 
@@ -8,7 +8,7 @@ https://kimtsunoda.github.io/controle-atividade-pet/
 
 ## Protótipo
 
-
+https://www.figma.com/file/ak45ROvucb1ATZIOJk9Kt8/Controle-Atividade-Pet?type=design&node-id=1-2&mode=design&t=MlNO3ZEjsdQXU2Uz-0
 
 ## Checklist
 
@@ -21,7 +21,7 @@ https://kimtsunoda.github.io/controle-atividade-pet/
 - [x] Passar dados via hierarquia de componentes, ou seja, usando @Input ou @Output.
 - [x] Mapear componentes à rotas no módulo de rotas.
 - [x] Criar navegação entre páginas por meio de rotas.
-- [ ] Passar dados entre componentes que representam diferentes telas via parâmetros de rotas.
+- [x] Passar dados entre componentes que representam diferentes telas via parâmetros de rotas.
 - [x] Validar campos do formulário com REGEX e apresentar os erros.
 - [x] Desabilitar o botão de submit enquanto o formulário está inválido.
 - [x] Fazer requisições a API com tratamento da resposta com Promises ou Observables.

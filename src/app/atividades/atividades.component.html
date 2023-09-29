@@ -56,7 +56,7 @@
       <tr *ngFor="let a of atividades">
         <td>{{ a.nomePet | uppercase }}</td>
         <td>{{ a.descricaoAtividade | uppercase }}</td>
-        <td>{{ a.data! | date: 'shortDate'}}</td>
+        <td>{{ a.data! | date: "dd/MM/yyyy"}}</td>
         <td class="right">
           <a
             ><i

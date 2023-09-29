@@ -5,6 +5,7 @@ export class Pet {
     nome: string;
     tipo: string;
     raca: string;
+    dataNascimento?: Date;
 
     constructor(nome: string, tipo: string, raca: string) {
       this.id = uuid();
@@ -19,6 +20,7 @@ export class Pet {
       p.nome = pet.nome;
       p.tipo = pet.tipo;
       p.raca = pet.raca;
+      p.dataNascimento = pet.dataNascimento;
       return p;
     }
 
