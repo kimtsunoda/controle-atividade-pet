@@ -16,7 +16,7 @@
         />
         <label for="input-nome" class="active">Nome</label>
         <div class="red-text"  [hidden]="nome.valid || nome.untouched">
-          Por favor, informe o nome do pet (Não é permitido espaço no começo)
+          Por favor, informe o nome do pet (É permitido somente letras e sem espaço no inicio)
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
         />
         <label for="input-tipo" class="active">Tipo</label>
         <div class="red-text"  [hidden]="tipo.valid || tipo.untouched">
-          Por favor, informe o tipo do pet (Não é permitido espaço no começo)
+          Por favor, informe o tipo do pet (É permitido somente letras e sem espaço no inicio)
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
         />
         <label for="input-raca" class="active">Raça</label>
         <div class="red-text" [hidden]="raca.valid || raca.untouched">
-          Por favor, informe o raça do pet (Não é permitido espaço no começo)
+          Por favor, informe o raça do pet (É permitido somente letras e sem espaço no inicio)
         </div>
       </div>
     </div>
@@ -122,5 +122,10 @@
       </div>
     </div>
   </div>
+
+  <h5>Total Pets Cadastrados</h5>
+  <app-painel>
+    [value]="this.pets.length"
+  </app-painel>
 
 </div>

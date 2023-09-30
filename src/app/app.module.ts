@@ -11,7 +11,7 @@ import { AtividadesComponent } from './atividades/atividades.component';
 import { FormsModule } from '@angular/forms';
 import { TotalAtividadesComponent } from './atividades/total-atividades/total-atividades.component';
 import { PetsDetalhesComponent } from './pets-detalhes/pets-detalhes.component';
-
+import { PainelComponent } from './painel/painel.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { PetsDetalhesComponent } from './pets-detalhes/pets-detalhes.component';
     PetsComponent,
     AtividadesComponent,
     TotalAtividadesComponent,
-    PetsDetalhesComponent
+    PetsDetalhesComponent,
+    PainelComponent,
   ],
   imports: [
     BrowserModule,

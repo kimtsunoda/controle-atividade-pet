@@ -30,7 +30,7 @@ export class AtividadesService {
       setTimeout(() => {
         this.atividades = WebStorageUtil.get(Constants.ATIVIDADES_KEY);
         this.atividades = this.atividades.filter((a) => {
-          a.id?.valueOf() != id?.valueOf();
+          return a.id?.valueOf() != id?.valueOf();
         });
         WebStorageUtil.set(Constants.ATIVIDADES_KEY, this.atividades);
         resolve(id);
@@ -46,7 +46,7 @@ export class AtividadesService {
   notifyTotalAtividades() {
     this.atividadeSource.next(this.listar()?.length);
   }
-
+  
   asObservable(): Observable<number> {
     return this.atividadeSource;
   }

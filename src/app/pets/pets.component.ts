@@ -3,7 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Pet } from '../models/pet';
 import { PetsService } from './pets.service';
 import { WebStorageUtil } from '../util/web.storage.util';
-
+import { PainelComponent } from '../painel/painel.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pets',
@@ -17,37 +18,41 @@ export class PetsComponent implements OnInit {
   pet!: Pet;
   pets?: Pet[];
 
-  modal = {
-    show: false,
-    title: '',
-    text: '',
-  };
+  subscription: Subscription;
 
-  constructor(private petService: PetsService) {}
+  constructor(private petsService: PetsService) {
+    this.subscription = this.petsService.asObservable().subscribe((data) => {
+      this.pets = data;
+    });
+  }
 
   ngOnInit(): void {
-    WebStorageUtil.initializePetsWebStorage()
-    this.pet = new Pet('', '', "");
-    this.pets = this.petService.listar();
+    WebStorageUtil.initializePetsWebStorage();
+    this.pet = new Pet('', '', '');
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   onSubmit() {
-    this.petService.salvar(this.pet);
+    if(this.petsService.exite(this.pet.id)) {
+      this.petsService.atualizar(this.pet)
+    }else{
+      this.petsService.salvar(this.pet);
+    }
+ 
     this.form.reset();
-    this.pet = new Pet('', '',"");
-    this.pets = this.petService.listar();
-
+    this.pet = new Pet('', '', '');
   }
 
   editar(pet: Pet) {
     let copia = Pet.copiar(pet);
     this.pet = copia;
-    this.petService.atualizar(pet);
   }
 
   deletar(id: string) {
-    this.petService.deletar(id);
-    this.pets = this.petService.listar();
+    this.petsService.deletar(id);
   }
 
 }

@@ -1,14 +1,22 @@
 {
   "pets": [
     {
+      "id": 1,
       "nome": "Luke",
       "tipo": "Cachorro",
       "raca": "Golden Retriever"
     },
     {
+      "id": 2,
       "nome": "Belinha",
       "tipo": "Gato",
       "raca": "Siames"
+    },
+    {
+      "id": 3,
+      "nome": "Max",
+      "tipo": "Cachorro",
+      "raca": "Lhasa"
     }
   ]
 }

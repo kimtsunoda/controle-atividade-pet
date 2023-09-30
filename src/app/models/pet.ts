@@ -24,4 +24,14 @@ export class Pet {
       return p;
     }
 
+    public static toObject(pet: Pet) {
+      return {
+        id: pet.id,
+        nome: pet.nome,
+        tipo: pet.tipo,
+        raca: pet.raca,
+        dataNascimento: pet.dataNascimento,
+      };
+    }
+
 }

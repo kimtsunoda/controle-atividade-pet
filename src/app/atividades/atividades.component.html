@@ -8,13 +8,15 @@
           id="input-nomePet"
           name="input-nomePet"
           type="text"
+          class="validate"
           [(ngModel)]="this.atividade.nomePet"
           #nomePet="ngModel"
+          pattern="^[^-\s][a-zA-ZÀ-ú ]*"
           required
         />
         <label for="input-nomePet" class="active">Nome do Pet</label>
         <div class="red-text" [hidden]="nomePet.valid || nomePet.untouched">
-          Por favor, informe o nome do pet
+          Por favor, informe o nome do pet (É permitido somente letras e sem espaço no inicio)
       </div>
     </div>
   </div>
@@ -24,13 +26,15 @@
         id="input-descricaoAtividade"
         name="input-descricaoAtividade"
         type="text"
+        class="validate"
         [(ngModel)]="this.atividade.descricaoAtividade"
         #descricaoAtividade="ngModel"
+        pattern="^[^-\s][a-zA-ZÀ-ú ]*"
         required
       />
       <label for="input-descricaoAtividade" class="active">Descrição da Atividade</label>
       <div class="red-text" [hidden]="descricaoAtividade.valid || descricaoAtividade.untouched">
-        Por favor, informe a descrição da atividade
+        Por favor, informe a descrição da atividade (É permitido somente letras e sem espaço no inicio)
     </div>
   </div>
 </div>

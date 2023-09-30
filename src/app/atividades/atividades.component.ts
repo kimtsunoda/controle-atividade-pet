@@ -30,11 +30,9 @@ export class AtividadesComponent implements OnInit {
       this.form.reset();
       this.atividade = new Atividade('', '');
       this.atividades = this.atividadesService.listar();
-      console.log('Atividade cadastrada com sucesso');
+      alert('Atividade cadastrada com sucesso');
     } catch (e) {
-      console.log(e);
-    } finally {
-      console.log('A operação foi finalizada');
+      alert(e);
     }
   }
 
@@ -42,12 +40,10 @@ export class AtividadesComponent implements OnInit {
     try {
       await this.atividadesService.deletar(id);
       this.atividades = this.atividadesService.listar();
-      console.log('Atividade cadastrada com sucesso');
+      alert('Atividade deletada com sucesso');
     } catch (e) {
-      console.log(e);
-    } finally {
-      console.log('A operação foi finalizada');
-    }
+      alert(e);
+    } 
   }
 
 }
